@@ -3,7 +3,7 @@ using namespace std;
 
 int find(int& x,vector<int>& fa)
 {
-    int root{x};
+    int root=x;
     while(fa[root]!=root)
     {
         root=fa[root];
@@ -36,7 +36,7 @@ void merge(int& x,int& y,vector<int>& fa,vector<int>& sz)
 
 void solve()
 {
-    int n{};
+    int n;
     cin >> n;
     vector<int> fa(n+1,0);
     vector<int> sz(n+1,1);
@@ -44,7 +44,7 @@ void solve()
     {
         fa[i]=i;
     }
-    int a{},b{},c{};
+    int a,b,c;
     cin >> a >> b >> c;
     find(a,fa);
     merge(b,c,fa,sz);
