@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int find(int& x,vector<int>& fa)
+int find(int x,vector<int>& fa)
 {
     int root=x;
     while(fa[root]!=root)
@@ -17,7 +17,7 @@ int find(int& x,vector<int>& fa)
     return root;
 }
 
-void merge(int& x,int& y,vector<int>& fa,vector<int>& sz)
+void merge(int x,int y,vector<int>& fa,vector<int>& sz)
 {
     x=find(x,fa);
     y=find(y,fa);
