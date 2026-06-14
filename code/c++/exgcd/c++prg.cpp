@@ -9,11 +9,9 @@ int exgcd(int a,int b,int& x,int& y)
         y=0;
         return a;
     }
-    int x1,y1,temp;
-    temp=exgcd(b,a%b,x1,y1);
-    x=y1;
-    y=x1-a/b*y1;
-    return temp;
+    int gcd=exgcd(b,a%b,y,x);
+    y=y-a/b*x;
+    return gcd;
 }
 
 void solve()
