@@ -19,7 +19,7 @@ void solve()
         string str;
         cin >> ch >> str;
         trie* cur=root;
-        if(ch=='I')
+        if(ch=='i')
         {
             for(char s:str)
             {
@@ -31,8 +31,9 @@ void solve()
             }
             ++cur->num;
         }
-        else if(ch=='F')
+        else if(ch=='f')
         {
+            bool flag=true;
             for(char s:str)
             {
                 if(cur->rank.find(s)!=cur->rank.end())
@@ -41,24 +42,38 @@ void solve()
                 }
                 else
                 {
-                    cout << 0 << endl;
-                    goto end;
+                    flag=false;
+                    break;
                 }
             }
-            cout << cur->num << endl;
-            end:;
+            if(flag==true)
+            {
+                cout << cur->num << endl;
+            }
+            else
+            {
+                cout << 0 << endl;
+            }
         }
-        else if(ch=='D')
+        else if(ch=='d')
         {
+            bool flag=true;
             for(char s:str)
             {
-                if(cur->rank.find(s)==cur->rank.end())
+                if(cur->rank.find(s)!=cur->rank.end())
                 {
-                    cur->rank[s]=new trie();
+                    cur=cur->rank[s];
                 }
-                cur=cur->rank[s];
+                else
+                {
+                    flag=false;
+                    break;
+                }
             }
-            --cur->num;
+            if(flag=true)
+            {
+                --cur->num;
+            }
         }
     }
     return;
