@@ -70,7 +70,7 @@ void solve()
                     break;
                 }
             }
-            if(flag=true)
+            if(flag==true)
             {
                 --cur->num;
             }
