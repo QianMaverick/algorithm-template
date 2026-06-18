@@ -7,9 +7,14 @@ class edge
 public:
     int v;
     int w;
+    edge(int v,int w)
+    {
+        this->v=v;
+        this->w=w;
+    }
 };
 
-class compare
+struct compare
 {
 public:
     bool operator()(edge a,edge b)
