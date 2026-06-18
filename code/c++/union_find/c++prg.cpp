@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct DSU
+class union_find
 {
+public:
     vector<int> fa;
     vector<int> sz;
-    DSU(int n)
+    union_find(int n)
     {
         fa.resize(n,0);
         sz.resize(n,1);
@@ -17,7 +18,7 @@ struct DSU
     int find(int x)
     {
         int root=x;
-        while(fa[root]!=root)
+        while(root!=fa[root])
         {
             root=fa[root];
         }
@@ -51,11 +52,11 @@ void solve()
 {
     int n;
     cin >> n;
-    DSU dsu(n);
+    union_find uf(n);
     int a,b;
     cin >> a >> b;
-    dsu.find(a);
-    dsu.merge(a,b);
+    uf.find(a);
+    uf.merge(a,b);
     return;
 }
 
