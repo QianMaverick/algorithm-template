@@ -38,7 +38,7 @@ int heap_optimized_prim(vector<vector<edge>> graph,int n)
             ++num;
             for(edge nex:graph[cur.v])
             {
-                if(!visited[nex.v]&&dist[nex.w]>nex.w)
+                if(!visited[nex.v]&&dist[nex.v]>nex.w)
                 {
                     dist[nex.v]=nex.w;
                     pq.emplace(nex.v,nex.w);
