@@ -1,53 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int find(int x,vector<int>& fa)
+struct DSU
 {
-    int root=x;
-    while(fa[root]!=root)
+    vector<int> fa;
+    vector<int> sz;
+    DSU(int n)
     {
-        root=fa[root];
+        fa.resize(n,0);
+        sz.resize(n,1);
+        for(int i=0;i<n;++i)
+        {
+            fa[i]=i;
+        }
     }
-    while(fa[x]!=root)
+    int find(int x)
     {
-        int temp{fa[x]};
-        fa[x]=root;
-        x=temp;
+        int root=x;
+        while(fa[root]!=root)
+        {
+            root=fa[root];
+        }
+        while(fa[x]!=root)
+        {
+            int temp{fa[x]};
+            fa[x]=root;
+            x=temp;
+        }
+        return root;
     }
-    return root;
-}
-
-void merge(int x,int y,vector<int>& fa,vector<int>& sz)
-{
-    x=find(x,fa);
-    y=find(y,fa);
-    if(x==y)
+    bool merge(int x,int y)
     {
-        return;
+        x=find(x);
+        y=find(y);
+        if(x==y)
+        {
+            return false;
+        }
+        if(sz[x]<sz[y])
+        {
+            swap(x,y);
+        }
+        fa[y]=x;
+        sz[x]=sz[x]+sz[y];
+        return true;
     }
-    if(sz[x]<sz[y])
-    {
-        swap(x,y);
-    }
-    fa[y]=x;
-    sz[x]=sz[x]+sz[y];
-    return;
-}
+};
 
 void solve()
 {
     int n;
     cin >> n;
-    vector<int> fa(n+1,0);
-    vector<int> sz(n+1,1);
-    for(int i=1;i<=n;++i)
-    {
-        fa[i]=i;
-    }
-    int a,b,c;
-    cin >> a >> b >> c;
-    find(a,fa);
-    merge(b,c,fa,sz);
+    DSU dsu(n);
+    int a,b;
+    cin >> a >> b;
+    dsu.find(a);
+    dsu.merge(a,b);
     return;
 }
 
