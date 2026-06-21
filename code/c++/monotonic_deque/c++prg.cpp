@@ -22,7 +22,7 @@ void solve()
         {
             dq.pop_front();
         }
-        if(i>=m-1)
+        if(-1<=i-m)
         {
             cout << nums[dq.front()] << " ";
         }
