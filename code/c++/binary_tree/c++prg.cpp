@@ -117,12 +117,12 @@ void solve()
     tree* root=creatbfs(nums,start);
     bfs(root,ans);
     deletetree(root);
-    // tree* root=creatdfs(nums,start);
-    // dfs(root,ans);
-    // deletetree(root);
-    for(int i=0;i<n;++i)
+    tree* root=creatdfs(nums,start);
+    dfs(root,ans);
+    deletetree(root);
+    for(int i=0;i<ans.size();++i)
     {
-        cout << nums[i] << " ";
+        cout << ans[i] << " ";
     }
     cout << endl;
     return;
