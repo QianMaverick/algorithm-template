@@ -26,8 +26,8 @@ void bfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& 
 
 void dfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& ans)
 {
-    ans.emplace_back(start);
     visited[start]=true;
+    ans.emplace_back(start);
     for(int nex:graph[start])
     {
         if(!visited[nex]&&graph[start][nex]!=inf)
