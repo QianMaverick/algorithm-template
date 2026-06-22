@@ -12,12 +12,12 @@ void bfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& 
         int cur=q.front();
         q.pop();
         ans.emplace_back(cur);
-        for(int i=0;i<graph[cur].size();++i)
+        for(int nex:graph[cur])
         {
-            if(!visited[i]&&graph[cur][i]!=inf)
+            if(!visited[nex]&&graph[cur][nex]!=inf)
             {
-                q.emplace(i);
-                visited[i]=true;
+                q.emplace(nex);
+                visited[nex]=true;
             }
         }
     }
@@ -28,11 +28,11 @@ void dfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& 
 {
     ans.emplace_back(start);
     visited[start]=true;
-    for(int i=0;i<graph[start].size();++i)
+    for(int nex:graph[start])
     {
-        if(!visited[i]&&graph[start][i]!=inf)
+        if(!visited[nex]&&graph[start][nex]!=inf)
         {
-            dfs(graph,visited,i,ans);
+            dfs(graph,visited,nex,ans);
         }
     }
     return;
