@@ -1,15 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct tree
+class tree
 {
-    int val{};
-    tree* left{};
-    tree* right{};
-    tree():val(0),left(nullptr),right(nullptr){}
+public:
+    int val;
+    tree* left;
+    tree* right;
     tree(int v):val(v),left(nullptr),right(nullptr){}
-    tree(int v,tree* l):val(v),left(l),right(nullptr){}
-    tree(int v,tree* l,tree* r):val(v),left(l),right(r){}
 };
 
 void deleteTree(tree* root)
@@ -31,11 +29,11 @@ void bfs(tree* root,vector<int>& ans)
     {
         return;
     }
-    queue<tree*> q{};
+    queue<tree*> q;
     q.emplace(root);
     while(!q.empty())
     {
-        tree* cur{q.front()};
+        tree* cur=q.front();
         q.pop();
         ans.emplace_back(cur->val);
         if(cur->left)
@@ -69,12 +67,12 @@ tree* creatbfs(vector<int> nums,int& start)
         ++start;
         return nullptr;
     }
-    tree* root{new tree(nums[start++])};
-    queue<tree*> q{};
+    tree* root=new tree(nums[start++]);
+    queue<tree*> q;
     q.emplace(root);
     while(!q.empty()&&start<nums.size())
     {
-        tree* cur{q.front()};
+        tree* cur=q.front();
         q.pop();
         if(start<nums.size()&&nums[start]!=-1)
         {
@@ -99,7 +97,7 @@ tree* creatdfs(vector<int> nums,int& start)
         ++start;
         return nullptr;
     }
-    tree* root{new tree(nums[start++])};
+    tree* root=new tree(nums[start++]);
     root->left=creatdfs(nums,start);
     root->right=creatdfs(nums,start);
     return root;
@@ -107,22 +105,20 @@ tree* creatdfs(vector<int> nums,int& start)
 
 void solve()
 {
-    int nodes{};
-    cin >> nodes;
-    vector<int> nums(nodes,{});
-    vector<int> ans{};
-    int start{0};
-    for(int& n:nums)
+    int n;
+    cin >> n;
+    vector<int> nums(n);
+    for(int i=0;i<n;++i)
     {
-        cin >> n; //
+        cin >> nums[i]; //
     }
-    tree* root{creatbfs(nums,start)};
+    int start=0;
+    vector<int> ans;
+    tree* root=creatbfs(nums,start);
     bfs(root,ans);
-    // tree* root{creatdfs(nums,start)};
-    // dfs(root,ans);
-    for(int& a:ans)
+    for(int i=0;i<n;++i)
     {
-        cout << a << " ";
+        cout << nums[i] << " ";
     }
     cout << endl;
     return;
