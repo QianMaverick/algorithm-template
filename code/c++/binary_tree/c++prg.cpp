@@ -10,14 +10,14 @@ public:
     tree(int v):val(v),left(nullptr),right(nullptr){}
 };
 
-void deleteTree(tree* root)
+void deletetree(tree* root)
 {
     if(!root)
     {
         return;
     }
-    deleteTree(root->left);
-    deleteTree(root->right);
+    deletetree(root->left);
+    deletetree(root->right);
     delete root;
     root=nullptr;
     return;
@@ -116,6 +116,10 @@ void solve()
     vector<int> ans;
     tree* root=creatbfs(nums,start);
     bfs(root,ans);
+    deletetree(root);
+    // tree* root=creatdfs(nums,start);
+    // dfs(root,ans);
+    // deletetree(root);
     for(int i=0;i<n;++i)
     {
         cout << nums[i] << " ";
