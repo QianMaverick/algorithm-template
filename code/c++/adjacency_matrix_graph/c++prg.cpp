@@ -1,16 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-const int inf{numeric_limits<int>::max()/2};
+int inf=numeric_limits<int>::max()/2;
 
 void bfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& ans)
 {
-    queue<int> q{};
+    queue<int> q;
     q.emplace(start);
     visited[start]=true;
     while(!q.empty())
     {
-        int cur{q.front()};
+        int cur=q.front();
         q.pop();
         ans.emplace_back(cur);
         for(int i=0;i<graph[cur].size();++i)
@@ -20,18 +19,6 @@ void bfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& 
                 q.emplace(i);
                 visited[i]=true;
             }
-        }
-    }
-    return;
-}
-
-void bfsall(vector<vector<int>> graph,vector<bool>& visited,vector<int>& ans)
-{
-    for(int i=0;i<graph.size();++i)
-    {
-        if(!visited[i])
-        {
-            bfs(graph,visited,i,ans);
         }
     }
     return;
@@ -51,40 +38,26 @@ void dfs(vector<vector<int>> graph,vector<bool>& visited,int start,vector<int>& 
     return;
 }
 
-void dfsall(vector<vector<int>> graph,vector<bool>& visited,vector<int>& ans)
-{
-    for(int i=0;i<graph.size();++i)
-    {
-        if(!visited[i])
-        {
-            dfs(graph,visited,i,ans);
-        }
-    }
-    return;
-}
-
 void solve()
 {
-    int nodes{},edges{};
-    cin >> nodes >> edges;
-    vector<vector<int>> graph(nodes,vector<int>(nodes,inf));
-    vector<bool> visited(nodes,false);
-    vector<int> ans{};
-    int start{0};
-    for(int i=0;i<edges;++i)
+    int n,m;
+    cin >> n >> m;
+    vector<vector<int>> graph(n,vector<int>(n,inf));
+    vector<bool> visited(n,false);
+    for(int i=0;i<m;++i)
     {
-        int from{},to{},weight{};
-        cin >> from >> to >> weight; //
-        graph[from][to]=weight;
-        graph[to][from]=weight; //
+        int u,v,w;
+        cin >> u >> v >> w; //
+        graph[u][v]=w;
+        graph[v][u]=w; //
     }
+    int start=0;
+    vector<int> ans;
     bfs(graph,visited,start,ans);
-    // bfsall(graph,visited,ans);
-    // dfs(graph,visited,start,ans);
-    // dfsall(graph,visited,ans);
-    for(int a:ans)
+    dfs(graph,visited,start,ans);
+    for(int i=0;i<ans.size();++i)
     {
-        cout << a << " ";
+        cout << ans[i] << " ";
     }
     cout << endl;
     return;
