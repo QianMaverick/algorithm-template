@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
+int inf=numeric_limits<int>::max()/2;
 
-const int inf{numeric_limits<int>::max()/2};
-
-void dijkstra(vector<vector<int>>& graph,vector<bool>& visited,int& start,vector<int>& dist)
+void dijkstra(vector<vector<int>> graph,vector<bool> visited,int start,vector<int>& dist)
 {
     dist[start]=0;
     for(int i=0;i<graph.size();++i)
     {
-        int cur{inf};
+        int cur=inf;
         for(int j=0;j<graph.size();++j)
         {
             if(!visited[j]&&(cur==inf||dist[j]<dist[cur]))
@@ -17,9 +16,9 @@ void dijkstra(vector<vector<int>>& graph,vector<bool>& visited,int& start,vector
             }
         }
         visited[cur]=true;
-        for(int i=0;i<graph.size();++i)
+        for(int j=0;j<graph.size();++j)
         {
-            dist[i]=min(dist[i],dist[cur]+graph[cur][i]);
+            dist[j]=min(dist[j],dist[cur]+graph[cur][j]);
         }
     }
     return;
@@ -27,22 +26,23 @@ void dijkstra(vector<vector<int>>& graph,vector<bool>& visited,int& start,vector
 
 void solve()
 {
-    int nodes{},edges{},start{};
-    cin >> nodes >> edges >> start;
-    vector<vector<int>> graph(nodes,vector<int>(nodes,inf));
-    vector<bool> visited(nodes,false);
-    vector<int> dist(nodes,inf);
-    for(int i=0;i<edges;++i)
+    int n,m;
+    cin >> n >> m;
+    vector<vector<int>> graph(n,vector<int>(n,inf));
+    vector<bool> visited(n,false);
+    for(int i=0;i<m;++i)
     {
-        int from{},to{},weight{};
-        cin >> from >> to >> weight;
-        graph[from][to]=weight;
-        graph[to][from]=weight; //
+        int u,v,w;
+        cin >> u >> v >> w;
+        graph[u][v]=w;
+        graph[v][u]=w;
     }
+    int start=0;
+    vector<int> dist(n,inf);
     dijkstra(graph,visited,start,dist);
-    for(int& d:dist)
+    for(int i:dist)
     {
-        cout << d << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
