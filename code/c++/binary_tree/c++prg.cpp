@@ -108,9 +108,9 @@ void solve()
     int n;
     cin >> n;
     vector<int> nums(n);
-    for(int i=0;i<n;++i)
+    for(int& i:nums)
     {
-        cin >> nums[i];
+        cin >> i;
     }
     int start=0;
     vector<int> ans;
@@ -120,9 +120,9 @@ void solve()
     tree* root=creatdfs(nums,start);
     dfs(root,ans);
     deletetree(root);
-    for(int i=0;i<ans.size();++i)
+    for(int i:ans)
     {
-        cout << ans[i] << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
