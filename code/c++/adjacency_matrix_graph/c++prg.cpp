@@ -55,9 +55,9 @@ void solve()
     vector<int> ans;
     bfs(graph,visited,start,ans);
     dfs(graph,visited,start,ans);
-    for(int i=0;i<ans.size();++i)
+    for(int i:ans)
     {
-        cout << ans[i] << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
