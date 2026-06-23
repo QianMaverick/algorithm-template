@@ -25,23 +25,23 @@ void solve()
     vector<int> ans;
     while(!q.empty())
     {
-        int u=q.front();
+        int cur=q.front();
         q.pop();
-        ans.emplace_back(u);
-        for(int v:graph[u])
+        ans.emplace_back(cur);
+        for(int nex:graph[cur])
         {
-            --in[v];
-            if(in[v]==0)
+            --in[nex];
+            if(in[nex]==0)
             {
-                q.emplace(v);
+                q.emplace(nex);
             }
         }
     }
     if(ans.size()==n)
     {
-        for(int a:ans)
+        for(int i:ans)
         {
-            cout << a << " ";
+            cout << i << " ";
         }
         cout << endl;
     }
