@@ -7,11 +7,7 @@ class edge
 public:
     int v;
     int w;
-    edge(int v,int w)
-    {
-        this->v=v;
-        this->w=w;
-    }
+    edge(int v,int w):v(v),w(w){}
 };
 
 struct compare
@@ -23,13 +19,13 @@ public:
     }
 };
 
-int heap_optimized_prim(vector<vector<edge>> graph,int n)
+int heap_optimized_prim(vector<vector<edge>> graph)
 {
-    vector<int> dist(n,inf);
-    vector<bool> visited(n,false);
     priority_queue<edge,vector<edge>,compare> pq;
-    dist[0]=0;
+    vector<bool> visited(graph.size(),false);
+    vector<int> dist(graph.size(),inf);
     pq.emplace(0,0);
+    dist[0]=0;
     int sum=0;
     int num=0;
     while(!pq.empty())
@@ -51,7 +47,7 @@ int heap_optimized_prim(vector<vector<edge>> graph,int n)
             }
         }
     }
-    if(num==n)
+    if(num==graph.size())
     {
         return sum;
     }
@@ -75,7 +71,7 @@ void solve()
         graph[v].emplace_back(u,w);
     }
     int num;
-    num=heap_optimized_prim(graph,n);
+    num=heap_optimized_prim(graph);
     cout << num << endl;
     return;
 }
