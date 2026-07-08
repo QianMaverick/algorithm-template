@@ -9,7 +9,7 @@ public:
     edge(int v,int w):v(v),w(w){}
 };
 
-void bfs(vector<vector<edge>> graph,vector<bool> visited,int start,vector<int>& ans)
+void bfs(vector<vector<edge>> graph,vector<bool>& visited,int start,vector<int>& ans)
 {
     queue<int> q;
     q.emplace(start);
@@ -31,7 +31,7 @@ void bfs(vector<vector<edge>> graph,vector<bool> visited,int start,vector<int>& 
     return;
 }
 
-void dfs(vector<vector<edge>> graph,vector<bool> visited,int start,vector<int>& ans)
+void dfs(vector<vector<edge>> graph,vector<bool>& visited,int start,vector<int>& ans)
 {
     visited[start]=true;
     ans.emplace_back(start);
