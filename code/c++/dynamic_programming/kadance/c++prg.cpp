@@ -11,10 +11,10 @@ void solve()
         cin >> i;
     }
     int ans=numeric_limits<int>::min()/2;
-    vector<int> sums(nums);
-    for(int i=0;i<n;++i)
+    int sum=nums[0];
+    for(int i=1;i<n;++i)
     {
-        ans=max(ans,sums[i]=max(nums[i],sums[i-1]+nums[i]));
+        ans=max(ans,sum=max(sum+nums[i],nums[i]));
     }
     cout << ans << endl;
     return;
