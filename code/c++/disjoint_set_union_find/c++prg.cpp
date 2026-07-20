@@ -53,15 +53,12 @@ bool union2(int x,int y,vector<int>& fa,vector<int>& rk)
     }
     if(rk[x]<rk[y])
     {
-        fa[x]=y;
+        swap(x,y);
     }
-    else
+    fa[y]=x;
+    if(rk[x]==rk[y])
     {
-        fa[y]=x;
-        if(rk[x]==rk[y])
-        {
-            ++rk[x];
-        }
+        ++rk[x];
     }
     return true;
 }
