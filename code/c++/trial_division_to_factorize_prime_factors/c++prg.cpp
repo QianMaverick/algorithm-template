@@ -18,9 +18,9 @@ void solve()
     {
         ++nums[num];
     }
-    for(auto [i,j]:nums)
+    for(pair<int,int> i:nums)
     {
-        cout << i << " " << j << endl;
+        cout << i .first << " " << i.second << endl;
     }
     return;
 }
