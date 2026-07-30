@@ -3,7 +3,7 @@ using namespace std;
 
 void solve()
 {
-    int num{};
+    int num;
     cin >> num;
     if(num==1)
     {
