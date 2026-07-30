@@ -20,7 +20,7 @@ void solve()
     }
     for(pair<int,int> i:nums)
     {
-        cout << i .first << " " << i.second << endl;
+        cout << i.first << " " << i.second << endl;
     }
     return;
 }
