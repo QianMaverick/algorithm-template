@@ -3,22 +3,22 @@ using namespace std;
 
 void solve()
 {
-    int num{};
+    int num;
     cin >> num;
-    map<int,int> nums{};
+    map<int,int> nums;
     for(int i=2;i<=num/i;++i)
     {
         while(num%i==0)
         {
             ++nums[i];
-            num/=i;
+            num=num/i;
         }
     }
     if(num>1)
     {
         ++nums[num];
     }
-    for(auto& [i,j]:nums)
+    for(auto [i,j]:nums)
     {
         cout << i << " " << j << endl;
     }
