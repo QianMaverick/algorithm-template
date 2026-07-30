@@ -3,24 +3,24 @@ using namespace std;
 
 void solve()
 {
-    int num{};
+    int num;
     cin >> num;
-    vector<int> nums{};
+    vector<int> nums;
     for(int i=1;i<=num/i;++i)
     {
         if(num%i==0)
         {
             nums.emplace_back(i);
-            if(i!=num/i)
+            if(num/i!=i)
             {
                 nums.emplace_back(num/i);
             }
         }
     }
     sort(nums.begin(),nums.end(),less<int>());
-    for(int& n:nums)
+    for(int i:nums)
     {
-        cout << n << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
