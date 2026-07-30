@@ -3,10 +3,10 @@ using namespace std;
 
 void solve()
 {
-    int n{};
+    int n;
     cin >> n;
     vector<bool> nums(n+1,true);
-    vector<int> temp{};
+    vector<int> temp;
     nums[0]=false;
     nums[1]=false;
     for(int i=2;i<=n;++i)
@@ -15,14 +15,14 @@ void solve()
         {
             temp.emplace_back(i);
         }
-        for(int p:temp)
+        for(int j:temp)
         {
-            if(i*p>n)
+            if(i*j>n)
             {
                 break;
             }
-            nums[i*p]=false;
-            if(i%p==0)
+            nums[i*j]=false;
+            if(i%j==0)
             {
                 break;
             }
