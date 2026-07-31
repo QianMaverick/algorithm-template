@@ -19,8 +19,7 @@ void solve()
     int a,b,x,y;
     cin >> a >> b;
     exgcd(a,b,x,y);
-    x=(x%b+b)%b;
-    cout << x << endl;
+    cout << (x%b+b)%b << endl;
     return;
 }
 
