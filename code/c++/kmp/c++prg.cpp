@@ -3,9 +3,9 @@ using namespace std;
 
 void solve()
 {
-    string p{},s{};
+    string p,s;
     cin >> p >> s;
-    vector<int> nexts(p.size(),{}),ans{};
+    vector<int> nexts(p.size()),ans;
     for(int i=1,j=0;i<p.size();++i)
     {
         while(j!=0&&p[i]!=p[j])
@@ -34,9 +34,9 @@ void solve()
             j=nexts[j-1];
         }
     }
-    for(int a:ans)
+    for(int i:ans)
     {
-        cout << a << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
