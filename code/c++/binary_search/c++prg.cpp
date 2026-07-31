@@ -3,11 +3,11 @@ using namespace std;
 
 int binary_search(vector<int> nums,int num)
 {
-    int l{0};
-    int r{nums.size()-1};
+    int l=0;
+    int r=nums.size()-1;
     while(l<=r)
     {
-        int m{(l+r)/2};
+        int m=(l+r)/2;
         if(nums[m]==num)
         {
             return m;
@@ -26,14 +26,14 @@ int binary_search(vector<int> nums,int num)
 
 void solve()
 {
-    int n{};
+    int n;
     cin >> n;
-    vector<int> nums(n,{});
-    for(int& n:nums)
+    vector<int> nums(n);
+    for(int& i:nums)
     {
-        cin >> n;
+        cin >> i;
     }
-    int num{};
+    int num;
     cin >> num;
     cout << binary_search(nums,num) << endl;
     return;
