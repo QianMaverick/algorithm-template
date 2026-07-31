@@ -7,12 +7,12 @@ void merge_sort(vector<int>& nums,int l,int r)
     {
         return;
     }
-    int m{(l+r)/2};
+    int m=(l+r)/2;
     merge_sort(nums,l,m);
     merge_sort(nums,m+1,r);
-    int i{l};
-    int j{m+1};
-    vector<int> temp{};
+    int i=l;
+    int j=m+1;
+    vector<int> temp;
     while(i<=m&&j<=r)
     {
         if(nums[i]<nums[j])
@@ -36,20 +36,19 @@ void merge_sort(vector<int>& nums,int l,int r)
     {
         nums[l+i]=temp[i];
     }
-    temp.clear();
     return;
 }
 
 void solve()
 {
-    int n{};
+    int n;
     cin >> n;
-    vector<int> nums(n,0);
+    vector<int> nums(n);
     for(int& i:nums)
     {
         cin >> i;
     }
-    merge_sort(nums,0,nums.size()-1);
+    merge_sort(nums,0,n-1);
     for(int i:nums)
     {
         cout << i << " ";
