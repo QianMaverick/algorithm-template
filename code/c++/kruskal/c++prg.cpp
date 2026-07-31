@@ -8,12 +8,7 @@ public:
     int u;
     int v;
     int w;
-    edge(int u,int v,int w)
-    {
-        this->u=u;
-        this->v=v;
-        this->w=w;
-    }
+    edge(int u,int v,int w):u(u),v(v),w(w){}
 };
 
 class compare
@@ -25,63 +20,53 @@ public:
     }
 };
 
-class union_find
+int find1(int x,vector<int>& fa)
 {
-public:
-    vector<int> fa;
-    vector<int> sz;
-    union_find(int n)
+    int root=x;
+    while(fa[root]!=root)
     {
-        fa.resize(n,0);
-        sz.resize(n,1);
-        for(int i=0;i<n;++i)
-        {
-            fa[i]=i;
-        }
+        root=fa[root];
     }
-    int find(int x)
+    while(fa[x]!=root)
     {
-        int root=x;
-        while(fa[root]!=root)
-        {
-            root=fa[root];
-        }
-        while(fa[x]!=root)
-        {
-            int temp{fa[x]};
-            fa[x]=root;
-            x=temp;
-        }
-        return root;
+        int temp=fa[x];
+        fa[x]=root;
+        x=temp;
     }
-    
-    bool merge(int x,int y)
+    return root;
+}
+
+bool union1(int x,int y,vector<int>& fa,vector<int>& sz)
+{
+    x=find1(x,fa);
+    y=find1(y,fa);
+    if(x==y)
     {
-        x=find(x);
-        y=find(y);
-        if(x==y)
-        {
-            return false;
-        }
-        if(sz[x]<sz[y])
-        {
-            swap(x,y);
-        }
-        fa[y]=x;
-        sz[x]=sz[x]+sz[y];
-        return true;
+        return false;
     }
-};
+    if(sz[x]<sz[y])
+    {
+        swap(x,y);
+    }
+    fa[y]=x;
+    sz[x]=sz[x]+sz[y];
+    return true;
+}
 
 int kruskal(vector<edge>& edges,int n)
 {
     sort(edges.begin(),edges.end(),compare());
-    union_find uf(n);
+    vector<int> fa(n,0);
+    vector<int> sz(n,1);
+    for(int i=0;i<n;++i)
+    {
+        fa[i]=i;
+    }
     int sum=0;
     int num=0;
     for(edge cur:edges)
     {
-        if(uf.merge(cur.u,cur.v))
+        if(union1(cur.u,cur.v,fa,sz))
         {
             sum=sum+cur.w;
             ++num;
@@ -113,8 +98,7 @@ void solve()
         cin >> u >> v >> w;
         edges.emplace_back(u,v,w);
     }
-    int num;
-    num=kruskal(edges,n);
+    int num=kruskal(edges,n);
     cout << num << endl;
     return;
 }
