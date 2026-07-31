@@ -19,14 +19,15 @@ void solve()
         }
         if(!sk.empty())
         {
-            cout << sk.top() << endl;
+            cout << sk.top() << " ";
         }
         else
         {
-            cout << -1 << endl;
+            cout << -1 << " ";
         }
         sk.emplace(i);
     }
+    cout << endl;
     return;
 }
 
