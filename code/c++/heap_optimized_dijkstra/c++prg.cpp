@@ -1,42 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
+int inf=numeric_limits<int>::max()/2;
 
-const int inf{numeric_limits<int>::max()/2};
-
-struct edge
+class edge
 {
-    int to{};
-    int weight{};
-    edge():to(0),weight(0){}
-    edge(int t):to(t),weight(0){}
-    edge(int t,int w):to(t),weight(w){}
+public:
+    int t;
+    int w;
+    edge(int t,int w):t(t),w(w){}
 };
 
-struct compare
+class compare
 {
+public:
     bool operator()(edge a,edge b)
     {
-        return a.weight>b.weight;
+        return a.w>b.w;
     }
 };
 
 void dijkstra(vector<vector<edge>> graph,int start,vector<int>& dist)
 {
-    priority_queue<edge,vector<edge>,compare> pq{};
+    priority_queue<edge,vector<edge>,compare> pq;
     dist[start]=0;
     pq.emplace(start,0);
     while(!pq.empty())
     {
-        edge cur{pq.top()};
+        edge cur=pq.top();
         pq.pop();
-        if(cur.weight<=dist[cur.to])
+        if(cur.w<=dist[cur.t])
         {
-            for(edge edge:graph[cur.to])
+            for(edge nex:graph[cur.t])
             {
-                if(cur.weight+edge.weight<dist[edge.to])
+                if(cur.w+nex.w<dist[nex.t])
                 {
-                    dist[edge.to]=cur.weight+edge.weight;
-                    pq.emplace(edge.to,dist[edge.to]);
+                    dist[nex.t]=cur.w+nex.w;
+                    pq.emplace(nex.t,dist[nex.t]);
                 }
             }
         }
@@ -46,21 +45,23 @@ void dijkstra(vector<vector<edge>> graph,int start,vector<int>& dist)
 
 void solve()
 {
-    int nodes{},edges{},start{};
-    cin >> nodes >> edges >> start;
-    vector<vector<edge>> graph(nodes,vector<edge>{});
-    vector<int> dist(nodes,inf);
-    for(int i=0;i<edges;++i)
+    int n,m;
+    cin >> n >> m;
+    int start;
+    cin >> start;
+    vector<vector<edge>> graph(n);
+    vector<int> dist(n,inf);
+    for(int i=0;i<m;++i)
     {
-        int from{},to{},weight{};
-        cin >> from >> to >> weight;
-        graph[from].emplace_back(to,weight);
-        graph[to].emplace_back(from,weight); //
+        int u,v,w;
+        cin >> u >> v >> w;
+        graph[u].emplace_back(v,w);
+        graph[v].emplace_back(u,w);
     }
     dijkstra(graph,start,dist);
-    for(int d:dist)
+    for(int i:dist)
     {
-        cout << d << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
