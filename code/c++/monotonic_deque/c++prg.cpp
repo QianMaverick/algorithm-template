@@ -17,7 +17,7 @@ void solve()
         {
             dq.pop_back();
         }
-        dq.push_back(i);
+        dq.emplace_back(i);
         while(dq.front()<=i-m)
         {
             dq.pop_front();
