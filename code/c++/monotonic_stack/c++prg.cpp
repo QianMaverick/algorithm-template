@@ -5,24 +5,27 @@ void solve()
 {
     int n;
     cin >> n;
-    stack<int> nums;
-    while(n--)
+    vector<int> nums(n);
+    for(int& i:nums)
     {
-        int num;
-        cin >> num;
-        while(!nums.empty()&&num<=nums.top())
+        cin >> i;
+    }
+    stack<int> sk;
+    for(int i:nums)
+    {
+        while(!sk.empty()&&i<=sk.top())
         {
-            nums.pop();
+            sk.pop();
         }
-        if(!nums.empty())
+        if(!sk.empty())
         {
-            cout << nums.top() << endl;
+            cout << sk.top() << endl;
         }
         else
         {
             cout << -1 << endl;
         }
-        nums.push(num);
+        sk.emplace(i);
     }
     return;
 }
