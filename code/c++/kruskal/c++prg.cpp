@@ -98,8 +98,7 @@ void solve()
         cin >> u >> v >> w;
         edges.emplace_back(u,v,w);
     }
-    int num=kruskal(edges,n);
-    cout << num << endl;
+    cout << kruskal(edges,n) << endl;
     return;
 }
 
