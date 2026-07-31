@@ -16,7 +16,7 @@ int binary_exponentiation(int a,int b,int mod)
     return num;
 }
 
-int C(int a,int b,int mod,vector<int> facs)
+int cab(int a,int b,int mod,vector<int> facs)
 {
     if(b<0||a<b)
     {
@@ -31,7 +31,7 @@ int lucas(int a,int b,int mod,vector<int> facs)
     {
         return 1;
     }
-    return C(a%mod,b%mod,mod,facs)*lucas(a/mod,b/mod,mod,facs)%mod;
+    return cab(a%mod,b%mod,mod,facs)*lucas(a/mod,b/mod,mod,facs)%mod;
 }
 
 void solve()
