@@ -20,9 +20,7 @@ void solve()
 {
     int a,b;
     cin >> a >> b;
-    int num;
-    num=binary_multiplication(a,b);
-    cout << num << endl;
+    cout << binary_multiplication(a,b) << endl;
     return;
 }
 
