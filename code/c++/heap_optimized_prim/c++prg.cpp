@@ -10,7 +10,7 @@ public:
     edge(int v,int w):v(v),w(w){}
 };
 
-struct compare
+class compare
 {
 public:
     bool operator()(edge a,edge b)
@@ -19,11 +19,9 @@ public:
     }
 };
 
-int heap_optimized_prim(vector<vector<edge>> graph)
+int heap_optimized_prim(vector<vector<edge>> graph,vector<bool> visited,vector<int>& dist)
 {
     priority_queue<edge,vector<edge>,compare> pq;
-    vector<bool> visited(graph.size(),false);
-    vector<int> dist(graph.size(),inf);
     pq.emplace(0,0);
     dist[0]=0;
     int sum=0;
@@ -63,6 +61,8 @@ void solve()
     int n,m;
     cin >> n >> m;
     vector<vector<edge>> graph(n);
+    vector<bool> visited(n,false);
+    vector<int> dist(n,inf);
     for(int i=0;i<m;++i)
     {
         int u,v,w;
@@ -70,9 +70,7 @@ void solve()
         graph[u].emplace_back(v,w);
         graph[v].emplace_back(u,w);
     }
-    int num;
-    num=heap_optimized_prim(graph);
-    cout << num << endl;
+    cout << heap_optimized_prim(graph,visited,dist) << endl;
     return;
 }
 
