@@ -5,7 +5,8 @@ void solve()
 {
     string p,s;
     cin >> p >> s;
-    vector<int> nexts(p.size()),ans;
+    vector<int> nexts(p.size());
+    vector<int> ans;
     for(int i=1,j=0;i<p.size();++i)
     {
         while(j!=0&&p[i]!=p[j])
