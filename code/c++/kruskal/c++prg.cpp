@@ -53,10 +53,10 @@ bool union1(int x,int y,vector<int>& fa,vector<int>& sz)
     return true;
 }
 
-int kruskal(vector<edge>& edges,int n)
+int kruskal(vector<edge> edges,int n)
 {
     sort(edges.begin(),edges.end(),compare());
-    vector<int> fa(n,0);
+    vector<int> fa(n);
     vector<int> sz(n,1);
     for(int i=0;i<n;++i)
     {
