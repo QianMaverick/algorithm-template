@@ -67,7 +67,7 @@ void solve1()
 {
     int n;
     cin >> n;
-    vector<int> fa(n,0);
+    vector<int> fa(n);
     vector<int> sz(n,1);
     for(int i=0;i<n;++i)
     {
@@ -80,7 +80,7 @@ void solve2()
 {
     int n;
     cin >> n;
-    vector<int> fa(n,0);
+    vector<int> fa(n);
     vector<int> rk(n,0);
     for(int i=0;i<n;++i)
     {
