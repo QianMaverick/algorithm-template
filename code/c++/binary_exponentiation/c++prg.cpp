@@ -20,9 +20,7 @@ void solve()
 {
     int a,b;
     cin >> a >> b;
-    int num;
-    num=binary_exponentiation(a,b);
-    cout << num << endl;
+    cout << binary_exponentiation(a,b) << endl;
     return;
 }
 
