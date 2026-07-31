@@ -5,19 +5,22 @@ void solve()
 {
     int n;
     cin >> n;
+    vector<int> nums(n);
+    for(int& i:nums)
+    {
+        cin >> i;
+    }
     priority_queue<int,vector<int>,less<int>> maxq;
     priority_queue<int,vector<int>,greater<int>> minq;
-    for(int i=0;i<n;++i)
+    for(int i:nums)
     {
-        int temp;
-        cin >> temp;
-        if(maxq.empty()||maxq.top()>=temp)
+        if(maxq.empty()||maxq.top()>=i)
         {
-            maxq.emplace(temp);
+            maxq.emplace(i);
         }
         else
         {
-            minq.emplace(temp);
+            minq.emplace(i);
         }
         if(maxq.size()>minq.size()+1)
         {
@@ -31,9 +34,10 @@ void solve()
         }
         if(i%2==0)
         {
-            cout << maxq.top() << endl;
+            cout << maxq.top() << " ";
         }
     }
+    cout << endl;
     return;
 }
 
