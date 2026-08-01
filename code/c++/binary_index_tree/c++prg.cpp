@@ -51,9 +51,10 @@ void solve()
         {
             int l,r;
             cin >> l >> r;
-            cout << sum(r,nums)-sum(l-1,nums) << endl;
+            cout << sum(r,nums)-sum(l-1,nums) << " ";
         }
     }
+    cout << endl;
     return;
 }
 
