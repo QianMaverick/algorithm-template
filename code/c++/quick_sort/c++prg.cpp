@@ -7,7 +7,7 @@ void quick_sort(vector<int>& nums,int& l,int& r)
     {
         return;
     }
-    int m{(l+r)/2};
+    int m=(l+r)/2;
     if(nums[l]>nums[m])
     {
         swap(nums[l],nums[m]);
@@ -20,9 +20,9 @@ void quick_sort(vector<int>& nums,int& l,int& r)
     {
         swap(nums[l],nums[m]);
     }
-    int i{l};
-    int j{r};
-    int num{nums[m]};
+    int i=l;
+    int j=r;
+    int num=nums[m];
     while(i<=j)
     {
         while(i<=j&&nums[i]<num)
@@ -45,18 +45,19 @@ void quick_sort(vector<int>& nums,int& l,int& r)
 
 void solve()
 {
-    int n{};
+    int n;
     cin >> n;
-    vector<int> nums(n,{});
-    for(int& n:nums)
+    vector<int> nums(n);
+    for(int& i:nums)
     {
-        cin >> n;
+        cin >> i;
     }
-    int l{0},r{nums.size()-1};
+    int l=0;
+    int r=nums.size()-1;
     quick_sort(nums,l,r);
-    for(int& n:nums)
+    for(int i:nums)
     {
-        cout << n << " ";
+        cout << i << " ";
     }
     cout << endl;
     return;
