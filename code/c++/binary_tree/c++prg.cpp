@@ -112,7 +112,8 @@ void solve()
     {
         cin >> i;
     }
-    int start=0;
+    int start;
+    cin >> start;
     vector<int> ans;
     tree* root=creatbfs(nums,start);
     bfs(root,ans);
