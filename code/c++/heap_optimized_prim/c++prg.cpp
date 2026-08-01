@@ -62,7 +62,6 @@ void solve()
     cin >> n >> m;
     vector<vector<edge>> graph(n);
     vector<bool> visit(n,false);
-    vector<int> dist(n,inf);
     for(int i=0;i<m;++i)
     {
         int u,v,w;
@@ -72,6 +71,7 @@ void solve()
     }
     int start;
     cin >> start;
+    vector<int> dist(n,inf);
     int ans=heap_optimized_prim(graph,visit,start,dist);
     cout << ans << endl;
     return;
