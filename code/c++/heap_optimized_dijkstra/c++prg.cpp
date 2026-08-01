@@ -48,7 +48,6 @@ void solve()
     int n,m;
     cin >> n >> m;
     vector<vector<edge>> graph(n);
-    vector<int> dist(n,inf);
     for(int i=0;i<m;++i)
     {
         int u,v,w;
@@ -58,6 +57,7 @@ void solve()
     }
     int start;
     cin >> start;
+    vector<int> dist(n,inf);
     dijkstra(graph,start,dist);
     for(int i:dist)
     {
