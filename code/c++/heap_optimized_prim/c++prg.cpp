@@ -19,25 +19,25 @@ public:
     }
 };
 
-int heap_optimized_prim(vector<vector<edge>> graph,vector<bool> visited,vector<int>& dist)
+int heap_optimized_prim(vector<vector<edge>> graph,vector<bool> visit,int start,vector<int>& dist)
 {
     priority_queue<edge,vector<edge>,compare> pq;
-    pq.emplace(0,0);
-    dist[0]=0;
+    pq.emplace(start,0);
+    dist[start]=0;
     int sum=0;
     int num=0;
     while(!pq.empty())
     {
         edge cur=pq.top();
         pq.pop();
-        if(!visited[cur.v])
+        if(!visit[cur.v])
         {
-            visited[cur.v]=true;
+            visit[cur.v]=true;
             sum=sum+cur.w;
             ++num;
             for(edge nex:graph[cur.v])
             {
-                if(!visited[nex.v]&&dist[nex.v]>nex.w)
+                if(!visit[nex.v]&&dist[nex.v]>nex.w)
                 {
                     dist[nex.v]=nex.w;
                     pq.emplace(nex.v,nex.w);
@@ -61,7 +61,7 @@ void solve()
     int n,m;
     cin >> n >> m;
     vector<vector<edge>> graph(n);
-    vector<bool> visited(n,false);
+    vector<bool> visit(n,false);
     vector<int> dist(n,inf);
     for(int i=0;i<m;++i)
     {
@@ -70,7 +70,10 @@ void solve()
         graph[u].emplace_back(v,w);
         graph[v].emplace_back(u,w);
     }
-    cout << heap_optimized_prim(graph,visited,dist) << endl;
+    int start;
+    cin >> start;
+    int ans=heap_optimized_prim(graph,visit,start,dist);
+    cout << ans << endl;
     return;
 }
 
