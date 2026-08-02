@@ -12,7 +12,7 @@ void bfs(vector<vector<int>> graph,vector<bool>& visit,int start,vector<int>& an
         int cur=q.front();
         q.pop();
         ans.emplace_back(cur);
-        for(int nex:graph[cur])
+        for(int nex=0;nex<graph[cur].size();++nex)
         {
             if(!visit[nex]&&graph[cur][nex]!=inf)
             {
@@ -28,7 +28,7 @@ void dfs(vector<vector<int>> graph,vector<bool>& visit,int start,vector<int>& an
 {
     visit[start]=true;
     ans.emplace_back(start);
-    for(int nex:graph[start])
+    for(int nex=0;nex<graph[start].size();++nex)
     {
         if(!visit[nex]&&graph[start][nex]!=inf)
         {
