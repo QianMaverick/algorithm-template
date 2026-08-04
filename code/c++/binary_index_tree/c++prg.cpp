@@ -37,24 +37,12 @@ void solve()
         cin >> num;
         add(i,num,nums);
     }
-    while(m--)
-    {
-        int op;
-        cin >> op;
-        if(op==1)
-        {
-            int i,num;
-            cin >> i >> num;
-            add(i,num,nums);
-        }
-        if(op==2)
-        {
-            int l,r;
-            cin >> l >> r;
-            cout << sum(r,nums)-sum(l-1,nums) << " ";
-        }
-    }
-    cout << endl;
+    int i,num;
+    cin >> i >> num;
+    add(i,num,nums);
+    int l,r;
+    cin >> l >> r;
+    cout << sum(r,nums)-sum(l-1,nums) << endl;
     return;
 }
 
