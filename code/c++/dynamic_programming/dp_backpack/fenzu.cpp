@@ -34,21 +34,21 @@ void solve()
         }
     }
     cout << nums[n][m] << endl;
-// 	vector<int> nums(m+1,0);
-// 	for(int i=1;i<=n;++i)
-// 	{
-// 		for(int j=m;j>=1;--j)
-// 		{
-// 			for(int k=1;k<=s[i];++k)
-// 			{
-// 				if(j>=v[i][k])
-// 				{
-// 					nums[j]=max(nums[j],nums[j-v[i][k]]+w[i][k]);
-// 				}
-// 			}
-// 		}
-// 	}
-// 	cout << nums[m] << endl;
+    // vector<int> nums(m+1,0);
+    // for(int i=1;i<=n;++i)
+    // {
+    //     for(int j=m;j>=1;--j)
+    //     {
+    //         for(int k=1;k<=s[i];++k)
+    //         {
+    //             if(j>=v[i][k])
+    //             {
+    //                 nums[j]=max(nums[j],nums[j-v[i][k]]+w[i][k]);
+    //             }
+    //         }
+    //     }
+    // }
+    // cout << nums[m] << endl;
     return;
 }
 
