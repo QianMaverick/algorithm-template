@@ -38,7 +38,7 @@ void solve()
 {
     int a,b,mod;
     cin >> a >> b >> mod;
-    vector<int> facs(mod+1,0);
+    vector<int> facs(mod+1);
     facs[0]=1;
     for(int i=1;i<=mod;++i)
     {
