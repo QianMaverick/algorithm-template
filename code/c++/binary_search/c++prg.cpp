@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int binary_search(vector<int> nums,int num)
+int binary_search(int num,vector<int> nums)
 {
     int l=0;
     int r=nums.size()-1;
@@ -35,7 +35,7 @@ void solve()
     }
     int num;
     cin >> num;
-    cout << binary_search(nums,num) << endl;
+    cout << binary_search(num,nums) << endl;
     return;
 }
 
