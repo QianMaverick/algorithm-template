@@ -73,6 +73,12 @@ void solve1()
     {
         fa[i]=i;
     }
+    int x;
+    cin >> x;
+    cout << find1(x,fa) << endl;
+    int y,z;
+    cin >> y >> z;
+    union1(y,z,fa,sz);
     return;
 }
 
@@ -86,6 +92,12 @@ void solve2()
     {
         fa[i]=i;
     }
+    int x;
+    cin >> x;
+    cout << find2(x,fa) << endl;
+    int y,z;
+    cin >> y >> z;
+    union2(y,z,fa,rk);
     return;
 }
 
