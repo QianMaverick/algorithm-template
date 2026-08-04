@@ -47,7 +47,7 @@ void solve()
             cin >> i >> num;
             add(i,num,nums);
         }
-        else if(op==2)
+        if(op==2)
         {
             int l,r;
             cin >> l >> r;
