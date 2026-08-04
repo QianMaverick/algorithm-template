@@ -22,13 +22,13 @@ void solve()
     int a,b;
     cin >> a >> b;
     int n=max(a,b);
-    vector<int> facs(n+1,0);
+    vector<int> facs(n+1);
     facs[0]=1;
     for(int i=1;i<=n;++i)
     {
         facs[i]=facs[i-1]*i%mod;
     }
-    vector<int> invs(n+1,0);
+    vector<int> invs(n+1);
     invs[n]=binary_expinentiation(facs[n],mod-2);
     for(int i=n-1;i>=0;--i)
     {
