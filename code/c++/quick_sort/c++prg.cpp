@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void quick_sort(vector<int>& nums,int& l,int& r)
+void quick_sort(vector<int>& nums,int l,int r)
 {
     if(l>=r)
     {
@@ -53,7 +53,7 @@ void solve()
         cin >> i;
     }
     int l=0;
-    int r=nums.size()-1;
+    int r=n-1;
     quick_sort(nums,l,r);
     for(int i:nums)
     {
