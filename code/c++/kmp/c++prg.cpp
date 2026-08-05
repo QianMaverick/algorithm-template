@@ -7,25 +7,25 @@ void solve()
     cin >> s >> p;
     int n=s.size();
     int m=p.size();
-    vector<int> nexts(m);
+    vector<int> nexs(m);
     vector<int> ans;
     for(int i=1,j=0;i<m;++i)
     {
         while(j!=0&&p[i]!=p[j])
         {
-            j=nexts[j-1];
+            j=nexs[j-1];
         }
         if(p[i]==p[j])
         {
             ++j;
         }
-        nexts[i]=j;
+        nexs[i]=j;
     }
     for(int i=0,j=0;i<n;++i)
     {
         while(j!=0&&s[i]!=p[j])
         {
-            j=nexts[j-1];
+            j=nexs[j-1];
         }
         if(s[i]==p[j])
         {
@@ -34,7 +34,7 @@ void solve()
         if(j==m)
         {
             ans.emplace_back(i-m+1);
-            j=nexts[j-1];
+            j=nexs[j-1];
         }
     }
     for(int i:ans)
