@@ -6,9 +6,9 @@ void solve()
     int n,m;
     cin >> n >> m;
     vector<int> nums(n);
-    for(int i=0;i<n;++i)
+    for(int& i:nums)
     {
-        cin >> nums[i];
+        cin >> i;
     }
     deque<int> dq;
     for(int i=0;i<n;++i)
