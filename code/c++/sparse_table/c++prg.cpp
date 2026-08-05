@@ -3,10 +3,10 @@ using namespace std;
 
 void solve()
 {
-    int n{};
+    int n;
     cin >> n;
-    int m{(int)(log2(n))};
-    int st[m+1][n+1]{};
+    int m=n>>1;
+    vector<vector<int>> st(m+1,vector<int>(n+1,0));
     for(int i=1;i<=n;++i)
     {
         cin >> st[0][i];
@@ -18,9 +18,9 @@ void solve()
             st[i][j]=max(st[i-1][j],st[i-1][j+(1<<(i-1))]);
         }
     }
-    int l{},r{};
+    int l,r;
     cin >> l >> r;
-    m=(int)(log2(r-l+1));
+    m=(r-l+1)>>1;
     cout << max(st[m][l],st[m][r-(1<<m)+1]) << endl;
     return;
 }
