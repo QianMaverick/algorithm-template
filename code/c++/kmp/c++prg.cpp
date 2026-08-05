@@ -3,11 +3,13 @@ using namespace std;
 
 void solve()
 {
-    string p,s;
-    cin >> p >> s;
-    vector<int> nexts(p.size());
+    string s,p;
+    cin >> s >> p;
+    int n=s.size();
+    int m=p.size();
+    vector<int> nexts(m);
     vector<int> ans;
-    for(int i=1,j=0;i<p.size();++i)
+    for(int i=1,j=0;i<m;++i)
     {
         while(j!=0&&p[i]!=p[j])
         {
@@ -19,7 +21,7 @@ void solve()
         }
         nexts[i]=j;
     }
-    for(int i=0,j=0;i<s.size();++i)
+    for(int i=0,j=0;i<n;++i)
     {
         while(j!=0&&s[i]!=p[j])
         {
@@ -29,9 +31,9 @@ void solve()
         {
             ++j;
         }
-        if(j==p.size())
+        if(j==m)
         {
-            ans.emplace_back(i-p.size()+1);
+            ans.emplace_back(i-m+1);
             j=nexts[j-1];
         }
     }
