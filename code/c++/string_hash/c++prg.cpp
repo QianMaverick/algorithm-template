@@ -1,35 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ty=unsigned long long;
+int a=13331;
+int b=1e9+7;
 
 void solve()
 {
-    string str;
-    cin >> str;
-    ty n=str.size();
-    ty base1=131,mod1=1e9+7;
-    ty base2=13331,mod2=1e9+8;
-    vector<ty> num1(n+1,0),pow1(n+1,1);
-    vector<ty> num2(n+1,0),pow2(n+1,1);
-    for(ty i=1;i<=n;++i)
+    string s1,s2;
+    cin >> s1 >> s2;
+    int n=s1.size();
+    int m=s2.size();
+    if(n!=m)
     {
-        num1[i]=(num1[i-1]*base1+str[i-1])%mod1;
-        num2[i]=(num2[i-1]*base2+str[i-1])%mod2;
-        pow1[i]=pow1[i-1]*base1%mod1;
-        pow2[i]=pow2[i-1]*base2%mod2;
+        cout << false << endl;
+        return;
     }
-    ty l1,r1,l2,r2;
-    cin >> l1 >> r1 >> l2 >> r2;
-    if((num1[r1]-num1[l1-1]*pow1[r1-l1+1]%mod1+mod1)%mod1==(num1[r2]-num1[l2-1]*pow1[r2-l2+1]%mod1+mod1)%mod1)
+    vector<int> num1(n+1,0),pow1(n+1,1);
+    vector<int> num2(m+1,0),pow2(m+1,1);
+    for(int i=1;i<=n;++i)
     {
-        if((num2[r1]-num2[l1-1]*pow2[r1-l1+1]%mod2+mod2)%mod2==(num2[r2]-num2[l2-1]*pow2[r2-l2+1]%mod2+mod2)%mod2)
-        {
-            cout << true << endl;
-        }
-        else
-        {
-            cout << false << endl;
-        }
+        num1[i]=(num1[i-1]*a+s1[i-1])%b;
+        num2[i]=(num2[i-1]*a+s2[i-1])%b;
+        pow1[i]=pow1[i-1]*a%b;
+        pow2[i]=pow2[i-1]*a%b;
+    }
+    int hash1=(num1[n]-num1[0]*pow1[n]%b+b)%b;
+    int hash2=(num2[m]-num2[0]*pow2[n]%b+b)%b;
+    if(hash1==hash2)
+    {
+        cout << true << endl;
     }
     else
     {
