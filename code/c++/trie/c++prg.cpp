@@ -11,71 +11,56 @@ public:
 
 void solve()
 {
-    int n;
-    cin >> n;
     trie* root=new trie();
-    for(int i=0;i<n;++i)
+    string str;
+    cin >> str;
+    trie* cur=root;
+    for(char s:str)
     {
-        char ch;
-        string str;
-        cin >> ch >> str;
-        trie* cur=root;
-        if(ch=='i')
+        if(cur->rank.find(s)==cur->rank.end())
         {
-            for(char s:str)
-            {
-                if(cur->rank.find(s)==cur->rank.end())
-                {
-                    cur->rank[s]=new trie();
-                }
-                cur=cur->rank[s];
-            }
-            ++cur->num;
+            cur->rank[s]=new trie();
         }
-        else if(ch=='f')
+        cur=cur->rank[s];
+    }
+    ++cur->num;
+    bool flag=true;
+    for(char s:str)
+    {
+        if(cur->rank.find(s)!=cur->rank.end())
         {
-            bool flag=true;
-            for(char s:str)
-            {
-                if(cur->rank.find(s)!=cur->rank.end())
-                {
-                    cur=cur->rank[s];
-                }
-                else
-                {
-                    flag=false;
-                    break;
-                }
-            }
-            if(flag==true)
-            {
-                cout << cur->num << endl;
-            }
-            else
-            {
-                cout << 0 << endl;
-            }
+            cur=cur->rank[s];
         }
-        else if(ch=='d')
+        else
         {
-            bool flag=true;
-            for(char s:str)
-            {
-                if(cur->rank.find(s)!=cur->rank.end())
-                {
-                    cur=cur->rank[s];
-                }
-                else
-                {
-                    flag=false;
-                    break;
-                }
-            }
-            if(flag==true)
-            {
-                --cur->num;
-            }
+            flag=false;
+            break;
         }
+    }
+    if(flag==true)
+    {
+        cout << cur->num << endl;
+    }
+    else
+    {
+        cout << 0 << endl;
+    }
+    bool flag=true;
+    for(char s:str)
+    {
+        if(cur->rank.find(s)!=cur->rank.end())
+        {
+            cur=cur->rank[s];
+        }
+        else
+        {
+            flag=false;
+            break;
+        }
+    }
+    if(flag==true)
+    {
+        --cur->num;
     }
     return;
 }
