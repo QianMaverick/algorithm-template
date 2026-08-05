@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct trie
+class trie
 {
+public:
     unordered_map<char,trie*> rank;
     int num;
     trie():rank(),num(){}
