@@ -35,7 +35,6 @@ void solve2()
     {
         cin >> i;
     }
-    int ans=0;
     vector<int> lens;
     for(int i:nums)
     {
