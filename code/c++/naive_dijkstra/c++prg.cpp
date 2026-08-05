@@ -37,7 +37,8 @@ void solve()
         graph[u][v]=w;
         graph[v][u]=w;
     }
-    int start=0;
+    int start;
+    cin >> start;
     vector<int> dist(n,inf);
     dijkstra(graph,visited,start,dist);
     for(int i:dist)
