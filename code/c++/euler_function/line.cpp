@@ -36,12 +36,11 @@ void sovle()
             }
         }
     }
-    int sum=0;
-    for(int i:ans)
+    for(int i=1;i<=n;++i)
     {
-        sum=sum+i;
+        cout << ans[i] << " ";
     }
-    cout << sum << endl;
+    cout << endl;
     return;
 }
 
