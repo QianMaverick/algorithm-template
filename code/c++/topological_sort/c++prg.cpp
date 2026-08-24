@@ -43,12 +43,12 @@ void solve()
         {
             cout << i << " ";
         }
+        cout << endl;
     }
     else
     {
         cout << -1 << endl;
     }
-    cout << endl;
     return;
 }
 
