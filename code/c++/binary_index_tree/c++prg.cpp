@@ -3,15 +3,16 @@ using namespace std;
 
 int lowbit(int x)
 {
-    return (x&-x);
+    return x&-x;
 }
 
 void add(int i,int num,vector<int>& nums)
 {
-    int n=nums.size();
-    for(;i<=n;i=i+lowbit(i))
+    int n=nums.size()-1;
+    while(i<=n)
     {
         nums[i]=nums[i]+num;
+        i=i+lowbit(i);
     }
     return;
 }
@@ -19,17 +20,18 @@ void add(int i,int num,vector<int>& nums)
 int sum(int i,vector<int>& nums)
 {
     int sum=0;
-    for(;i>=1;i=i-lowbit(i))
+    while(i>=1)
     {
         sum=sum+nums[i];
+        i=i-lowbit(i);
     }
     return sum;
 }
 
 void solve()
 {
-    int n,m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
     vector<int> nums(n+1,0);
     for(int i=1;i<=n;++i)
     {
