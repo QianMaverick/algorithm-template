@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int maxn=1e5+10;
+int maxn=1e5+10;
 vector<int> tree(maxn*4,0);
 vector<int> lazy(maxn*4,0);
 vector<int> nums(maxn,0);
