@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve()
+void solve1()
 {
     int n,m;
     cin >> n >> m;
@@ -38,7 +38,7 @@ void solve()
     return;
 }
 
-void solve()
+void solve2()
 {
     int n,m;
     cin >> n >> m;
@@ -90,6 +90,7 @@ void solve()
 
 signed main()
 {
-    solve();
+    solve1();
+    solve2();
     return 0;
 }
