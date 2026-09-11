@@ -28,8 +28,8 @@ void solve()
         if((m2-m1)%d==0)
         {
             k1=(k1*(m2-m1)/d%(a2/d)+(a2/d))%(a2/d);
-            m1=m1+k1*a1;
-            a1=a1/d*a2;
+            m1=m1+a1*k1;
+            a1=a1*a2/d;
         }
         else
         {
