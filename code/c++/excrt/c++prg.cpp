@@ -22,14 +22,14 @@ void solve()
     cin >> a1 >> m1;
     for(int i=1;i<n;++i)
     {
-        int a2,m2,k1,k2;
+        int a2,m2,x,y;
         cin >> a2 >> m2;
-        int d=exgcd(a1,a2,k1,k2);
-        if((m2-m1)%d==0)
+        int gcd=exgcd(a1,a2,x,y);
+        if((m2-m1)%gcd==0)
         {
-            k1=(k1*(m2-m1)/d%(a2/d)+(a2/d))%(a2/d);
-            m1=m1+a1*k1;
-            a1=a1*a2/d;
+            k1=((x*(m2-m1)/gcd)%(a2/gcd)+(a2/gcd))%(a2/gcd);
+            m1=m1+a1*x;
+            a1=a1*a2/gcd;
         }
         else
         {
