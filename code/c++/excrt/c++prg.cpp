@@ -18,17 +18,17 @@ void solve()
 {
     int n;
     cin >> n;
-    int a1,m1;
-    cin >> a1 >> m1;
+    int a1,b1;
+    cin >> a1 >> b1;
     for(int i=1;i<n;++i)
     {
-        int a2,m2,x,y;
-        cin >> a2 >> m2;
+        int a2,b2,x,y;
+        cin >> a2 >> b2;
         int gcd=exgcd(a1,a2,x,y);
-        if((m2-m1)%gcd==0)
+        if((b2-b1)%gcd==0)
         {
-            x=((x*(m2-m1)/gcd)%(a2/gcd)+(a2/gcd))%(a2/gcd);
-            m1=m1+a1*x;
+            x=((x*(b2-b1)/gcd)%(a2/gcd)+(a2/gcd))%(a2/gcd);
+            b1=b1+a1*x;
             a1=a1*a2/gcd;
         }
         else
@@ -37,7 +37,7 @@ void solve()
             return;
         }
     }
-    cout << m1 << endl;
+    cout << b1 << endl;
     return;
 }
 
