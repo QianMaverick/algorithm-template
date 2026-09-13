@@ -12,7 +12,7 @@ int exgcd(int a,int b,int& x,int& y)
     int gcd=exgcd(b,a%b,y,x);
     y=y-a/b*x;
     return gcd;
-}
+}1
 
 void solve()
 {
