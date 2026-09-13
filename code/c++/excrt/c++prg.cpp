@@ -14,7 +14,6 @@ int exgcd(int a,int b,int& x,int& y)
     return gcd;
 }
 
-
 void solve()
 {
     int n;
