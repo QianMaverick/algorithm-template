@@ -27,7 +27,7 @@ void solve()
         int gcd=exgcd(a1,a2,x,y);
         if((m2-m1)%gcd==0)
         {
-            k1=((x*(m2-m1)/gcd)%(a2/gcd)+(a2/gcd))%(a2/gcd);
+            x=((x*(m2-m1)/gcd)%(a2/gcd)+(a2/gcd))%(a2/gcd);
             m1=m1+a1*x;
             a1=a1*a2/gcd;
         }
